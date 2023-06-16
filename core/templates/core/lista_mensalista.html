@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    lista_mensalista
+{% endblock %}
+
+{% block main %}
+    Lista Mensalista <br>
+
+<ul class="list-group">
+    {% for i in dados %}
+    <li class="list-group-item">
+        Id do Veiculo: {{ i.id_veiculo }} <br>
+        Valor: {{ i.id_tabela }}<br>
+        Observacoes: {{ i.observacoes }}<br>
+    </li> <br>
+        <a href="{% url 'url_exclui_mensalista' i.id %}" >Excluir</a><br>
+    {% endfor %}
+</ul>
+    <button onclick="window.location.href='/'">Home</button>
+
+{% endblock %}

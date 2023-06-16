@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    confirma!
+{% endblock %}
+
+{% block main %}
+     <h3>Vacê tem certeza que deseja excluir: {{txt_info}} ?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, estou certo disso!</button>
+        <button type="button" onclick="window.location.href='/'">Não</button>
+    </form>
+{% endblock %}

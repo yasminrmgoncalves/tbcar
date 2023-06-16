@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    lista_veiculos
+{% endblock %}
+
+{% block main %}
+    Lista de Rotativo <br>
+
+<ul class="list-group">
+    {% for i in dados %}
+    <li class="list-group-item">
+        Id do Veiculo: {{ i.id_veiculo }} <br>
+        Valor: {{ i.id_tabela }}<br>
+        Entrada: {{ i.entrada }}<br>
+        Saida: {{ i.saida }}<br>
+        Total: {{ i.total }}<br>
+        Pago : {{i.pago }} <br>
+        Observacoes: {{ i.observacoes }}<br>
+    </li><br>
+        <a href="{% url 'url_altera_rotativo' i.id %}">Editar</a>
+        <a href="{% url 'url_exclui_rotativo' i.id %}" >Excluir</a><br>
+    {% endfor %}
+</ul>
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    lista_tabela
+{% endblock %}
+
+{% block main %}
+    Lista - Marca <br>
+
+<ul class="list-group">
+    {% for i in dados %}
+    <li class="list-group-item">
+        Nome: {{ i.nome }} <br>
+        Url: {{ i.url }}<br>
+        <a href="{% url 'url_altera_marca' i.id %}">Editar</a></br>
+        <a href="{% url 'url_exclui_marca' i.id %}" >Excluir</a><br>
+    </li><br>
+    {% endfor %}
+</ul>
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}

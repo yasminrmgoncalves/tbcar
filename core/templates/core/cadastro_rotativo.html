@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ txt_titulo }}
+{% endblock %}
+
+{% block main %}
+    {{txt_descricao}} <br>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form.as_p }}
+
+        <button type="submit">Salvar</button>
+        <button onclick="window.location.href='/'">Cancelar</button>
+    </form>
+
+{% endblock %}

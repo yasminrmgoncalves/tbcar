@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    lista_clientes
+{% endblock %}
+
+{% block main %}
+
+{% if messages %}
+
+    {% for mensagem in messages %}
+         <div class="alert alert-success alert-dismissible">
+            <strong>{{mensagem}}</strong>
+             <button type="button" class="close" data-dismiss="alert">&times;</button>
+         </div>
+    {% endfor %}
+{% endif %}
+
+
+<ul class="list-group">
+
+    {% for i in dados %}
+    <li class="list-group-item">
+        Nome: {{ i.nome }} <br>
+        Endereco:{% if i.endereco %}  {{ i.endereco }}  {% endif %}<br>
+        Complemento: {{ i.complemento }}<br>
+        Bairro: {{ i.bairro }}<br>
+        Cidade: {{ i.cidade }}<br>
+        Telefone: {{ i.fone }}<br>
+        E-mail: {{ i.email }}<br>
+        {% if i.foto %}
+            <img src = "{{ i.foto.url }}" width="200"> <br>
+        {% else %}
+            <img src="{% static 'img/imagem_perfil_generico.png' %}" width="200"> <br>
+        {% endif %}
+
+        <br>
+        <a href="{% url 'url_altera_cliente' i.id %}">Editar</a></br>
+        </li>  <br>
+
+    {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}>

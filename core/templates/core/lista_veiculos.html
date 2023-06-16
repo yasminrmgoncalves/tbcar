@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    lista_veiculos
+{% endblock %}
+
+{% block main %}
+    Lista de Veiculos <br>
+
+<ul class="list-group">
+    {% for i in dados %}
+    <li class="list-group-item">
+        Id: {{ i.id }} <br>
+        Placa: {{ i.placa }}<br>
+        Modelo: {{ i.modelo }}<br>
+        Cor: {{ i.cor }}<br>
+        ano: {{ i.ano }}<br>
+        Cliente : {{i.cliente }} <br>
+        {% if i.fotoVeiculo %}
+            <img src = "{{ i.fotoVeiculo.url }}" width="200"> <br>
+        {% else %}
+            <img src = "{% static 'img/img_carro_generico.jpg' %}" width="200"> <br>
+        {% endif %}
+        <br>
+        <a href="{% url 'url_altera_veiculo' i.id %}">Editar</a>
+        <a href="{% url 'url_exclui_veiculo' i.id %}" >Excluir</a><br>
+    </li> <br>
+    {% endfor %}
+</ul>
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}
