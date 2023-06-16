@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 import os
-from dj_static import Cling
-from django.core.wsgi import get_wsgi_application
 from pathlib import Path
 
 
@@ -33,7 +31,7 @@ SECRET_KEY =  env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -94,7 +92,6 @@ DATABASES = {
 
 
 import dj_database_url
-DATABASE_URL = os.environ.get('DATABASE_URL')
 
 DATABASES = {
     'default': dj_database_url.parse(env('DATABASE_URL'))
